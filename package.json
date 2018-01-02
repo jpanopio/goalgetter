@@ -1,0 +1,82 @@
+{
+  "name": "goalgetter",
+  "version": "1.0.0",
+  "description": "An application for keeping track of your goals.",
+  "scripts": {
+    "clean": "rimraf ./app",
+    "prebuild": "npm run clean && mkdir ./app",
+    "build": "babel-node ./node_modules/.bin/webpack",
+    "prewatch": "npm run clean",
+    "watch": "babel-node ./node_modules/.bin/webpack --progress --watch",
+    "prestart": "npm run clean",
+    "start": "babel-node ./node_modules/.bin/webpack-dev-server --open",
+    "test": "jest",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "author": "Julien Panopio",
+  "license": "ISC",
+  "devDependencies": {
+    "@storybook/react": "^3.2.17",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.2",
+    "enzyme": "^3.2.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.2.0",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "qs": "^6.5.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^2.3.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      "istanbul"
+    ]
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./src/**/*"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
+  }
+}
